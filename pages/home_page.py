@@ -20,8 +20,8 @@ class HomePage(QWidget):
         self.video_counter = 0
 
         # 创建保存目录
-        self.photos_dir = Path("photos")
-        self.videos_dir = Path("videos")
+        self.photos_dir = Path("data/photos")
+        self.videos_dir = Path("data/videos")
         self.photos_dir.mkdir(exist_ok=True)
         self.videos_dir.mkdir(exist_ok=True)
 
