@@ -20,7 +20,7 @@ class MainWindow(QWidget):
     def initUI(self):
         self.setWindowTitle(f'智慧座舱系统 - 欢迎，{self.username}')
         self.setFixedSize(1000, 800)
-        self.setWindowIcon(QIcon('../img/icon.png'))
+        self.setWindowIcon(QIcon('../data/img/icon.png'))
 
         # 创建主水平布局
         main_layout = QHBoxLayout()

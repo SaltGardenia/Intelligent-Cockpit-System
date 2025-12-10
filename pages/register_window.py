@@ -16,7 +16,7 @@ class RegisterWindow(QWidget):
     def initUI(self):
         self.setWindowTitle('用户注册 - 智慧座舱系统')
         self.setFixedSize(700, 600)
-        self.setWindowIcon(QIcon('../img/icon.png'))
+        self.setWindowIcon(QIcon('../data/img/icon.png'))
 
         layout = QVBoxLayout()
         layout.setAlignment(Qt.AlignCenter)
