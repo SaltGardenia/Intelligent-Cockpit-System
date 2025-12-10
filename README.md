@@ -24,7 +24,9 @@ GUI：PyQt
 
 ### 🤔功能详述：
 
+#### 地图：
 
+调用百度地图API，结合PyQt的QtWebEngineWidgets加载网页地图。
 
 
 
