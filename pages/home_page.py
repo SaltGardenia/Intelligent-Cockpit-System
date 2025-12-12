@@ -59,6 +59,9 @@ class HomePage(QWidget):
         self.center_layout.addWidget(self.center_area)
         self.center_layout.setContentsMargins(0, 0, 0, 0)
 
+        pixmap = QPixmap('data/img/mainPage.png')
+        self.center_area.setPixmap(pixmap.scaled(self.center_area.size(), aspectRatioMode=True, transformMode=1))
+
         # 按钮
         self.test_btn = QPushButton('座舱检测')
         self.line_btn = QPushButton('车道线检测')
