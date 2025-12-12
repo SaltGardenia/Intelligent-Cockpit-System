@@ -6,7 +6,7 @@ import cv2
 import os
 import json
 from pathlib import Path
-
+from driving_detect import driving_detect
 
 class HomePage(QWidget):
     def __init__(self, username="用户"):
@@ -18,6 +18,9 @@ class HomePage(QWidget):
         self.video_file_path = None
         self.photo_counter = 0
         self.video_counter = 0
+
+        # 实例化检测类
+        self.my_detect = driving_detect()
 
         # 创建保存目录
         self.photos_dir = Path("data/photos")
@@ -272,7 +275,15 @@ class HomePage(QWidget):
                 new_h = int(h * scale)
                 frame_rgb = cv2.resize(frame_rgb, (new_w, new_h))
                 h, w, ch = frame_rgb.shape
-
+            labels, boxs = self.my_detect.detect(frame_rgb)
+            print(labels, boxs)
+            i = 0
+            if labels is not None:
+                for box in boxs:
+                    cv2.rectangle(frame_rgb, (box[0], box[1]), (box[2], box[3]), (0, 255, 0), 2)
+                    cv2.putText(frame_rgb, labels[i], (box[0], box[1] + 20), cv2.FONT_HERSHEY_SIMPLEX, 1,
+                                (0, 255, 0), 3)
+                    i += 1
             # 转换为QImage
             bytes_per_line = ch * w
             q_img = QImage(frame_rgb.data, w, h, bytes_per_line, QImage.Format_RGB888)
