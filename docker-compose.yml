@@ -1,0 +1,17 @@
+version: '3.8'  # 兼容大部分Docker版本，提升通用性
+
+services:
+  intelligent-cockpit-system:
+    build: .  # 指定Dockerfile所在目录（当前目录），自动构建镜像
+    image: ${PROJECT_NAME:-intelligent-cockpit:latest}  # 镜像名称，支持环境变量自定义
+    container_name: ${CONTAINER_NAME:-intelligent-cockpit-container}  # 容器名称，避免冲突
+    ports:
+      - "5000:5000"  # 主机端口:容器端口（可根据项目修改，左侧主机端口使用者可自定义）
+    restart: unless-stopped  # 容器异常退出时自动重启，提升稳定性
+    volumes:
+      # 可选：挂载本地目录到容器，实现数据持久化（如日志、配置文件）
+      - ./logs:/app/logs  # 本地logs目录挂载到容器/app/logs，使用者无需担心日志丢失
+      - ./config:/app/config  # 本地配置目录挂载，使用者可修改本地配置无需重建镜像
+    # 可选：设置环境变量，使用者可通过.env文件自定义
+    env_file:
+      - .env.example  # 提供环境变量示例文件，使用者复制为.env即可修改

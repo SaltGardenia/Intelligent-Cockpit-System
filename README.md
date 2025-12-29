@@ -25,6 +25,24 @@
 
 - 封装：docker
 
+#### 部署运行指南:
+1、clone到本地
+```aiignore
+git clone https://github.com/SaltGardenia/Intelligent-Cockpit-System.git
+```
+
+2、进入项目根目录
+
+3、一键启动
+```aiignore
+ docker-compose up -d
+```
+
+停止部署
+```aiignore
+docker-compose down
+```
+
 ---
 
 ### 🤔功能详述：
